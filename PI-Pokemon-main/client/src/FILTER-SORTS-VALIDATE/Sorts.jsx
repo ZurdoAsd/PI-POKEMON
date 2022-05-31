@@ -40,43 +40,44 @@ import "../assets/Sorts.css"
 
 return(
 <div className="estilos.content">
-    <div><h3 className="estilos">Order Alpha</h3>
+
 <select
-  name="selectBox"
   onChange={alpha}>
+  <option value='' hidden>ORDER BY NAME</option>
   <option value="A-Z">A-Z</option>
   <option value="Z-A">Z-A</option>
 </select>
-</div>
 
-<div><h3  className="estilos">Order for Strength</h3>
+
+
 <select
-  className="estilos.a"
   onChange={orderBySTR}>
+  <option value="" hidden >ORDER BY STRENGTH</option>
   <option value="STR">STR++</option>
   <option value="STR-">STR--</option>
 </select>
-</div>
 
 
-<div> <h3 className="estilos">Types</h3>
+
+
 <select onChange={filtroPorTypes}>
+  <option value = "" hidden>FILTER BY TYPE</option>
   <option value="123">All Types</option>
   {allTypes.map(e => { return( <option value={e.name} key={e.name}>{e.name}</option>)})
   }
   
 </select>
-</div>
 
-<div> <h1 className="estilos">Origin</h1>
+
+
 <select
-  name="selectBox"
   onChange={filtroCreadoDB}>  
+<option value = "" hidden>FILTER BY ORIGIN</option>
 <option value="All">All</option>
 <option value="Created">Created</option>
 <option value="Existing">Existing</option>
 </select>
-</div>
+
 
 
 </div>

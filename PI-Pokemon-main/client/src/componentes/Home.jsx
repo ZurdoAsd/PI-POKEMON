@@ -24,16 +24,12 @@ export default function Home() {
     setCurrentPage(pageNumber);
   };
 
-  // useEffect(() => {
-  //   dispatch(getAllPokemons());
-  // }, [dispatch]);
-
-useEffect(() => {
-dispatch(getAllPokemons())
-}, [dispatch])
+  useEffect(() => {
+    dispatch(getAllPokemons());
+  }, [dispatch]);
 
   const handleClick = (e) => {
-    e.preventDefault()
+    e.preventDefault();
     dispatch(getAllPokemons());
   };
 
@@ -41,36 +37,48 @@ dispatch(getAllPokemons())
 
   return (
     <div className="container">
-      <div className="select-home">
+      <div>
         <SearchBar setCurrentPage={setCurrentPage} />
-        <div><button className="botForm" onClick={handleClick}>RECARGAR</button></div>
-        <Link to="/create"><button>Crear Pokemon </button></Link>       
-        <div> <Sorts setOrder={setOrder} setCurrentPage={setCurrentPage} /></div>
-            
-        <div><Paginado
+      </div>
+
+      <div className="select-home">
+        <div>
+          <button className="botHome" onClick={handleClick}>
+            RECARGAR
+          </button>
+        </div>
+        <Link to="/create">
+          <button className="botHome2">Crear Pokemon </button>
+        </Link>
+
+        <div className="estilos.content">
+          <Sorts setOrder={setOrder} setCurrentPage={setCurrentPage} />
+        </div>
+      </div>
+
+      <div>
+        <Paginado
           pokemonsPerPage={pokemonsPerPage}
           allPokemons={allPokemons.length}
           paginado={paginado}
-        /></div>
+        />
       </div>
 
       <div className="contentCards">
-        {currentpokemons.length? 
-        currentpokemons.map( (p) =>{
-          return (
-            
-              <div className="cards" key= {p.id} >
-                  <Link to ={ "/Home/" + p.id}>
-                  <Card name= {p.name.toUpperCase()}
-                       sprite =  {p.sprite}
-                      types={p.types}
-                   />
-                  </Link>
+        {currentpokemons.length ? (
+          currentpokemons.map((p) => {
+            return (
+              <div className="cards" key={p.id}>
+                <Card
+                  name={p.name.toUpperCase()}
+                  sprite={p.sprite}
+                  types={p.types}
+                  id={p.id}
+                />
               </div>
-          )
-      }) 
-        
-        : (
+            );
+          })
+        ) : (
           <img
             src="https://imgflip.com/s/meme/Grus-Plan.jpg"
             alt=""

@@ -18,30 +18,42 @@ export default function Details() {
 
 if (poke.name) {
 return (
-<div className="container">
-     
-<img src={poke.sprite} alt="" className="image" height="400px" width="550px"/>
-<div><h1>{poke.name}</h1></div>
-<div> 
-<div><h3>Type</h3><div>
-{poke.id.length > 8
-? poke.types?.map((g) => {return <ul key={g.id}>{g.name}</ul>;})
-: poke.Types?.map((g) => {return <ul key={g.id}>{g}</ul>;})}
+<div className="posicion-boton"> 
+   <Link to="/home">
+<button className="botdetail">Go to Home</button>
+</Link> 
+
+  
+<div className="container-details">
+
+ <div className="detail1"> 
+ <div className="mod1">
+ <div><h1>{poke.name}</h1></div>  
+ <img src={poke.sprite} alt=""  />
+ <h5>Normal</h5>
+ </div>
+ <div class="mod2">
+<img src={poke.shiny} alt=""/>
+<h5>Shimy</h5>
+ </div>
+
+</div>   
+
+<div className="detail2"> 
+<h2>Stats</h2>
+<div><h3>Type: {poke.types}</h3>
+</div>
+
+<h3>ID: {poke.id} </h3>
+<h3>HP: {poke.hp} </h3>
+<h3>ATTACK: {poke.attack} </h3>
+<h3>DEFENSE: {poke.defense}</h3>
+<h3>SPEED: {poke.speed} </h3>
+<h3>HEIGHT: {poke.height} </h3>
+<h3>WEIGHT: {poke.weight}</h3>
 </div>
 
 </div>
-<div><h3>Number Pokemon</h3><div>{poke.id}</div></div>
-<div><h3>HP</h3><div>{poke.hp}</div></div>
-<div><h3>ATTACK</h3><div>{poke.attack}</div></div>
-<div><h3>DEFENSE</h3><div>{poke.defense}</div></div>
-<div><h3>SPEED</h3><div>{poke.speed}</div></div>
-<div><h3>HEIGHT</h3><div>{poke.height}</div></div>
-<div><h3>WEIGHT</h3><div>{poke.weight}</div></div>
-</div>
-
-<Link to="/home">
-<button className="botForm">Go to Home</button>
-</Link>
 </div>
 );
   }

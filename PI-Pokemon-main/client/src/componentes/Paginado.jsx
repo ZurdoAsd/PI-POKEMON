@@ -10,7 +10,7 @@ export default function Paginado({ pokemonsPerPage, allPokemons, paginado }) {
 
   return (
     <nav>
-      <div>
+      <div className="container-paginado">
         <ul>
           {pagNum &&
             pagNum.map((number) => (

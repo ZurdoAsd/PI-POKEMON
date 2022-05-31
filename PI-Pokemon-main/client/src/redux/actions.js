@@ -3,14 +3,6 @@ import {
 CLEAR_DETAILS,ORDER_ALPHA,ORDER_STR,FILTER_API_DB,FILTER_TYPES,GET_TYPES,SEARCH_POKEMON,GET_POKEMONID,GET_POKEMONS
 } from "./DataTypes.js";
 
-// export function getAllPokemons() {
-//   return function (dispatch) {
-//     return axios(`http://localhost:3001/pokemons`)
-//       .then((res) => dispatch({ type: GET_POKEMONS, payload: res.data }))
-//       .catch(console.log("error"));
-//   };
-// }
-
 export function getAllPokemons() {
   return async function (dispatch) {
   const res= await axios(`http://localhost:3001/pokemons`)

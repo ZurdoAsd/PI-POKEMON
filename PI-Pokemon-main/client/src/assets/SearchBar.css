@@ -1,0 +1,20 @@
+.searchbar{
+    position: relative;
+ 
+}
+
+.container-searchbar{
+    background-color: rgb(7, 10, 81);
+    position:relative;
+    width: 100%;
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+
+.form-seartainer-searchbar form{  
+    padding: 5px;
+    width: 22vw;
+    margin-top: 10px;
+
+}

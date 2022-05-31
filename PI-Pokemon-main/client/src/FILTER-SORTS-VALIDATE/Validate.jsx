@@ -24,8 +24,8 @@
         error.defense = "La defensa debe ser entre 0 y 100";
     }
 
-    if(input.types.length<3){
-        error.types = "Must select at least one type and a maximun of two";
+    if(input.types.length>=3){
+        error.types = "puedes seleccionar hasta 3";
     }
     return error;
 }

@@ -28,10 +28,6 @@ dispatch(getTypes())
 },[dispatch])
 
 
-//notas  
-//revisa q paso xq cuando selecciono algo salta alerta q falta types.. meto types y nada  hasta q se completa otro campo
-
-
 const errorscontrol = useMemo(() => {
   if(error.name || error.hp || error.weight || error.attack || error.defense || error.height || error.types) return true;
   return false;
@@ -54,14 +50,6 @@ const handleOfChange = (e)=>{
 console.log(input)
 
 const handleSelectTypes = (e)=>{
-//   setInput({
-//     ...input,
-//     types : [...input.types, e.target.value ]
-//  })
-//  setError(validate({
-//     ...input,
-//     types : [...input.types, e.target.value ]
-//  }))  
 setInput({
   ...input,
   types: [...new Set([...input.types, e.target.value])],
@@ -75,11 +63,6 @@ const handleDeleteTypes = (e)=>{
       ...input, 
       types: newArr
   })
-  // setError(validate({
-  //     ...input,
-  //     types: newArr
-  // }))
-  
 }
 const handleReset = ()=>{
   setInput({
@@ -132,9 +115,9 @@ const handleSubmit = (e)=>{
   return (
 
     
-    <div  className="container">
+    <div  className="container-create">
       <div className="row">
-    
+    <h1 className="title"> Create New Pokemon</h1>
     <form className="form" onSubmit={handleSubmit} onReset={handleReset}>
 
     <div>
@@ -228,7 +211,7 @@ const handleSubmit = (e)=>{
 
           <div>
           <div className="section">
-            <label className="title-name">Strength: </label>
+            <label className="title-name">Strength:  </label>
             <input
               className="input"
               required
@@ -245,7 +228,7 @@ const handleSubmit = (e)=>{
           </div>
           <div>
           <div className="section">
-            <label className="title-name">Defense: </label>
+            <label className="title-name">Defense:   </label>
             <input
               className="input"
               required
@@ -276,7 +259,7 @@ const handleSubmit = (e)=>{
 
           <div>
           <div className="section">
-            <label className="title-name"> Pokemon type </label>
+            <label className="title-name">Type:</label>
             <select className="input" onChange={handleSelectTypes} >
               <option value="" hidden>Select type</option>
               {AlTypes && AlTypes.map(e => (<option key={e.id} value={e.name}>{e.name}</option>))}
@@ -288,8 +271,7 @@ const handleSubmit = (e)=>{
           <div className="item-eliminar">
         {input.types.map(e => (
           <div >
-          <div key={e} name={e} value={e} className="types">{e}</div>
-         <button type="button"  value={e} className="delete-types" onClick={handleDeleteTypes}>x</button>
+         <button type="button"  value={e} className="delete-types" onClick={handleDeleteTypes}>{e.toUpperCase()}</button>
           </div>))}
           </div>
           <button className="create-boton" type="submit" disabled={errorscontrol}>Create Pokemon</button>
@@ -298,7 +280,7 @@ const handleSubmit = (e)=>{
 
 
     <Link to="/home">
-          <button className="botForm">Go to home</button>
+          <button className="botcreate">GO TO HOME</button>
         </Link>
       </div>
     </div>

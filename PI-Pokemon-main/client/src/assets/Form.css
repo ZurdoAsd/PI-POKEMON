@@ -1,0 +1,96 @@
+.container-create {
+  background-color: #2881cc;
+  background-image: url(https://wallpapercave.com/wp/wp11177140.jpg);
+  background-size: cover;
+  height: 100vh;
+  width: 100%;
+}
+.title {
+  text-shadow: 2x 2px #1c519e;
+}
+
+.form {
+    width:30%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 10px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    background-color: #e5e5e5;
+    box-shadow: 0 2px 3px 4px rgba(20, 20, 20, 0.4);
+    border-radius: 10px;
+    padding: 20px;
+    min-height: 80%;
+   
+    opacity: 0.9;
+  }
+  .section { display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-bottom: 15px;}
+
+  .title-name{
+    font-size: 15px;  
+}
+  .input{
+    font-family: "Kabel Bd", sans-serif;
+    padding: 3px;
+    width: 13vw;
+    background-color: #e5e5e5;
+    border-style: groove;
+    border-radius: 2px; 
+}
+
+.item-eliminar{
+
+    display: flex;
+    height: fit-content;
+    margin-left: 5px;
+    padding-left:10px;
+    color:#e5e5e5;
+
+}
+
+
+.delete-types{
+    background: rgba(255, 255, 255, 0.397);
+    border-radius: 16px;
+    border: 1px solid rgba(255, 255, 255, 0.498);
+    margin: 5px;
+    font-size: 20;
+    font-weight: bold;
+    color: #e5e5e5;
+    background-color: #4c5354; 
+    padding: 10px;
+ 
+}
+.delete-types:hover{
+    transform: scale(90%);  
+}
+.error{
+    text-align: start;
+    color: #f42007;
+    font-size: 14px;
+}
+
+.botcreate{
+    border-radius: 30px;
+    font-size:30;
+    cursor:pointer;
+    color: #e5e5e5;
+    border: 2px solid gray;
+    background-color: #4c5354; 
+    padding: 15px 45px ;
+    font-weight: bold;
+}
+
+.botcreate:hover{
+    color: #e5e5e5;
+    border: 2px solid transparent;
+    border-style: groove;
+    transform: scale(120%);  
+    
+}

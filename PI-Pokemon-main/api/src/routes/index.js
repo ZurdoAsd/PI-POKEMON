@@ -27,6 +27,7 @@ const getAllPokemonApi = async () => {
         height: e.data.height,
         weight: e.data.weight,
         sprite: e.data.sprites.other.home.front_default,
+        shiny: e.data.sprites.other.home.front_shiny,
         types: e.data.types.map((e) => e.type.name + " "),
       };
     });
@@ -141,6 +142,70 @@ Types.findAll()
 
 
 });
+
+
+router.put("pokemons/:id", async(req, res) => {
+try {
+  
+const {id} = req.params
+const infodb = await Pokemon.findOne({where: {id: id}})
+
+await infodb.update({
+  // id: req.body.id,
+  name: req.body.name,
+  hp: req.body.hp,
+  attack: req.body.attack,
+  defense: req.body.defense,
+  speed: req.body.speed,
+  height: req.body.height,
+  weight: req.body.weight,
+  sprite: req.body.sprite,
+  types: req.body.types.map(e => e.name + " "),
+})
+req.body.types.forEach(async (e) => {
+  // recorro por los generos que me pasen y los busco en mi base de datos
+  let typesDB = await Types.findAll({ where: { name: e } });
+  await infodb.setTypes(typesDB);
+});
+
+res.send(infodb);
+} catch (error) {
+  console.log(error);
+}
+})
+
+router.delete("pokemons/:id", async(req, res) => {
+
+  try {
+    const { id } = req.params;
+
+    // const pokemonToDelete = await Pokemon.findByPk(id);
+
+    // if (pokemonToDelete) {
+    //   await pokemonToDelete.destroy();
+    //   return res.send("Pokemon Borrado!");
+    // }
+    // res.status(404).send("Pokemon no encontrado.");
+
+      try {
+        const { id } = req.params;
+        const pokemonToDelete = await Pokemon.findByPk(id);
+        if (pokemonToDelete) {
+          await pokemonToDelete.destroy();
+          return res.send("Pokemon Borrado!");
+        }
+        res.status(404).send("Pokemon no encontrado.");
+      } catch (error) {
+        res.status(400).send(error);
+      }
+    
+
+
+  } catch (error) {
+    res.status(400).send(error);
+  }
+
+})
 
 
 

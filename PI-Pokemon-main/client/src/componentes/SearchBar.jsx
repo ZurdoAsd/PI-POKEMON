@@ -5,6 +5,7 @@ import { searchpoke } from "../redux/actions";
 import "../assets/SearchBar.css";
 
 
+
 export default function SearchBar({setCurrentPage}) {
     const dispatch = useDispatch();
     const [name, setName] = useState('');
@@ -29,7 +30,8 @@ export default function SearchBar({setCurrentPage}) {
 
     }
   return (
-    <div>
+    <div className="searchbar"> 
+    <div className="container-searchbar">
       <form onSubmit={handleSubmit}> 
       <input
         className="input"
@@ -41,6 +43,7 @@ export default function SearchBar({setCurrentPage}) {
         onChange={handleInputChange}/>
       <button className="button">Search</button>
        </form>
+    </div>
     </div>
   );
 }
