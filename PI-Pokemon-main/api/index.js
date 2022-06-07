@@ -22,31 +22,6 @@ const { conn, Types } = require("./src/db.js");
 const axios = require("axios");
 
 const precarga = async () => {
-  // const url = await axios.get("https://pokeapi.co/api/v2/type");
-  // const aux = url.data.results;
-  // const resp1pes = aux.map((e) => {
-  //   return (obj = {
-  //     name:e.name,
-  //   });
-  // });
-//  console.log(resp1pes.flat())
-//  Types.bulkCreate(resp1pes);
-
-
-// const url1 = await axios.get("https://pokeapi.co/api/v2/type");
-// const aux = url1.data.results;
-// const bum = aux.map(e=>axios(e.url));
-// const subConsulta= await Promise.all(bum)
-// const resp1pes = subConsulta.map((e) => {
-//   return obj = {
-//     name:e.data.id,
-//     name:e.data.name,
-//   };
-// });
-// console.log(resp1pes)
-// Types.bulkCreate(resp1pes);
-
-
 const tipoos = (await axios.get("https://pokeapi.co/api/v2/type")).data.results.map(e =>({name:e.name + " "}))    
 await Types.bulkCreate(tipoos);
 };

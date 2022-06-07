@@ -8,13 +8,14 @@ import {
   SEARCH_POKEMON,
   GET_POKEMONID,
   GET_POKEMONS,
+  CLEAR_SEARCH
 } from "./DataTypes.js";
 
 const initialState = {
   pokemons: [],
   copiaPokemons: [],
   types: [],
-  details: [],
+  details: {},
 };
 
 export default function rootReducer(state = initialState, action) {
@@ -47,6 +48,12 @@ export default function rootReducer(state = initialState, action) {
         ...state,
         details: {},
       };
+      case CLEAR_SEARCH:
+        return {
+          ...state,
+          pokemons: {},
+        };
+
     //FILTROS
 
     case ORDER_ALPHA:
@@ -105,7 +112,6 @@ export default function rootReducer(state = initialState, action) {
 
     case FILTER_TYPES:
       let aux=state.copiaPokemons
-      console.log(aux)
       let filterTypes = aux.filter((e) =>
         e.types.includes(action.payload)
       );

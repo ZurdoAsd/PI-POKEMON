@@ -1,15 +1,24 @@
 import axios from "axios";
 import {
-CLEAR_DETAILS,ORDER_ALPHA,ORDER_STR,FILTER_API_DB,FILTER_TYPES,GET_TYPES,SEARCH_POKEMON,GET_POKEMONID,GET_POKEMONS
+  CLEAR_DETAILS,
+  ORDER_ALPHA,
+  ORDER_STR,
+  FILTER_API_DB,
+  FILTER_TYPES,
+  GET_TYPES,
+  SEARCH_POKEMON,
+  GET_POKEMONID,
+  GET_POKEMONS,
+  CLEAR_SEARCH,
 } from "./DataTypes.js";
 
 export function getAllPokemons() {
   return async function (dispatch) {
-  const res= await axios(`http://localhost:3001/pokemons`)
-  return dispatch({ 
-    type: GET_POKEMONS, 
-    payload: res.data 
-  });
+    const res = await axios(`http://localhost:3001/pokemons`);
+    return dispatch({
+      type: GET_POKEMONS,
+      payload: res.data,
+    });
   };
 }
 
@@ -18,8 +27,8 @@ export function getTypes() {
     try {
       const res = await axios(`http://localhost:3001/types`);
       return dispatch({
-         type: GET_TYPES, 
-         payload: res.data 
+        type: GET_TYPES,
+        payload: res.data,
       });
     } catch (error) {
       console.log(error);
@@ -28,16 +37,22 @@ export function getTypes() {
 }
 
 export function searchpoke(name) {
-  return async function (dispatch) {
-    try {
-      const res = await axios(`http://localhost:3001/pokemons?name=${name}`);
-      return dispatch({ 
-      type: SEARCH_POKEMON,
-      payload: res.data 
-      });
-    } catch (error) {
-      console.log(error);
-    }
+  return function (dispatch) {
+    axios
+      .get(`http://localhost:3001/pokemons?name=${name}`)
+      .then((response) =>
+        dispatch({
+          type: SEARCH_POKEMON,
+          payload: response.data,
+        })
+      )
+
+      .catch((error) =>
+        dispatch({
+          type: SEARCH_POKEMON,
+          payload: ["notFound"],
+        })
+      );
   };
 }
 
@@ -46,8 +61,8 @@ export function DetailPoke(id) {
     try {
       const res = await axios(`http://localhost:3001/pokemons/${id}`);
       return dispatch({
-      type: GET_POKEMONID ,
-      payload: res.data 
+        type: GET_POKEMONID,
+        payload: res.data,
       });
     } catch (error) {
       console.log(error);
@@ -57,10 +72,17 @@ export function DetailPoke(id) {
 
 export function clearDetails(payload) {
   return {
-     type: CLEAR_DETAILS,
-     payload };
+    type: CLEAR_DETAILS,
+    payload,
+  };
+}
+export function clearSearch() {
+  return {
+    type: CLEAR_SEARCH,
+  };
 }
 
+//crear
 export function crearPoke(input) {
   return async function () {
     try {

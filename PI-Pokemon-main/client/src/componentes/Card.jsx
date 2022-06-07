@@ -3,7 +3,6 @@ import "../assets/Card.css";
 import { Link } from "react-router-dom";
 
 export default function Card({ id, name, sprite, types }) {
-  console.log(types);
   return (
     <div>
       <ul className="card">

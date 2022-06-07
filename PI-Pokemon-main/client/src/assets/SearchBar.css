@@ -4,17 +4,20 @@
 }
 
 .container-searchbar{
-    background-color: rgb(7, 10, 81);
+    background-color: rgb(47, 149, 186);
     position:relative;
     width: 100%;
     padding-top: 20px;
     padding-bottom: 20px;
 }
-
+input#Search.input{
+    text-align: left;
+}
 
 .form-seartainer-searchbar form{  
     padding: 5px;
     width: 22vw;
     margin-top: 10px;
+
 
 }

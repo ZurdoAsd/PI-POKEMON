@@ -4,12 +4,12 @@ import { useParams } from "react-router-dom";
 import { DetailPoke, clearDetails } from "../redux/actions";
 import { Link } from "react-router-dom";
 import "../assets/Details.css";
+import fot from "../assets//no pokemon.jpeg"
 
 export default function Details() {
   const { id } = useParams();
  const poke = useSelector((state) => state.details);
   let dispatch = useDispatch();
-  console.log(poke)
 
   useEffect(() => {
     dispatch(DetailPoke(id));
@@ -18,22 +18,25 @@ export default function Details() {
 
 if (poke.name) {
 return (
-<div className="posicion-boton"> 
+<div className="posicion"> 
+<div className="posicion-boton-detail">
    <Link to="/home">
 <button className="botdetail">Go to Home</button>
 </Link> 
+ </div>
+<div className="titleD"><h1>{poke.name.toUpperCase()}</h1><h3>N° : {poke.id} </h3></div>  
 
-  
+
 <div className="container-details">
 
  <div className="detail1"> 
  <div className="mod1">
- <div><h1>{poke.name}</h1></div>  
+
  <img src={poke.sprite} alt=""  />
  <h5>Normal</h5>
  </div>
  <div class="mod2">
-<img src={poke.shiny} alt=""/>
+<img src={poke.shiny?poke.shiny:fot} alt=""/>
 <h5>Shimy</h5>
  </div>
 
@@ -44,7 +47,7 @@ return (
 <div><h3>Type: {poke.types}</h3>
 </div>
 
-<h3>ID: {poke.id} </h3>
+
 <h3>HP: {poke.hp} </h3>
 <h3>ATTACK: {poke.attack} </h3>
 <h3>DEFENSE: {poke.defense}</h3>
@@ -57,5 +60,11 @@ return (
 </div>
 );
   }
-  return <p>loading</p>;
+return(  
+  <img
+  src= "https://www.gratistodo.com/wp-content/uploads/2016/12/Pokemon-gifs-13.gif"
+  alt=""
+/>
+ )
+
 }

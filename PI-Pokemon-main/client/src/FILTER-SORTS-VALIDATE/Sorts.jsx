@@ -1,7 +1,7 @@
 import { useDispatch,useSelector } from 'react-redux'
 import { useEffect } from "react";
 import { FiltroTypes,FiltroApiDb,ordenAlpha,OrdenSTR,getTypes} from '../redux/actions'
-import "../assets/Sorts.css"
+
 
  function Sorts({setCurrentPage,setOrder}){
     const dispatch = useDispatch(); 
@@ -33,13 +33,12 @@ import "../assets/Sorts.css"
           dispatch(FiltroTypes(e.target.value))
           setCurrentPage(1);
           setOrder(`ordenado${e.target.value}`)
+          e.target.value="default"
           ;}
-
-        
- console.log(allTypes)       
+  
 
 return(
-<div className="estilos.content">
+<div>
 
 <select
   onChange={alpha}>
@@ -60,8 +59,9 @@ return(
 
 
 
-<select onChange={filtroPorTypes}>
-  <option value = "" hidden>FILTER BY TYPE</option>
+<select onChange={filtroPorTypes} defaultValue="default">
+  {/* <option value = "" hidden>FILTER BY TYPE</option> */}
+  <option value="default" disabled="disabled">FILTER BY TYPE</option>
   <option value="123">All Types</option>
   {allTypes.map(e => { return( <option value={e.name} key={e.name}>{e.name}</option>)})
   }

@@ -10,21 +10,16 @@
 }
 
 .form {
-    width:30%;
-    margin-left: auto;
-    margin-right: auto;
+    width:60%;
+    max-width: 300px;
+    margin: auto;
     margin-bottom: 10px;
-    position: relative;
     display: flex;
     flex-direction: column;
-    flex-wrap: wrap;
-    justify-content: space-evenly;
-    background-color: #e5e5e5;
+    background-color: white;
     box-shadow: 0 2px 3px 4px rgba(20, 20, 20, 0.4);
     border-radius: 10px;
-    padding: 20px;
-    min-height: 80%;
-   
+    padding: 4.5em 3em;
     opacity: 0.9;
   }
   .section { display: flex;
@@ -38,7 +33,7 @@
   .input{
     font-family: "Kabel Bd", sans-serif;
     padding: 3px;
-    width: 13vw;
+    width: 60%;
     background-color: #e5e5e5;
     border-style: groove;
     border-radius: 2px; 
@@ -93,4 +88,43 @@
     border-style: groove;
     transform: scale(120%);  
     
+}
+
+.forgrup{
+  position: relative;
+  --color: #5757577e;
+  margin-bottom: 15px;
+
+}
+.forinput{
+  width: 70%;
+  font-family: inherit;
+  font-size: inherit;
+  color:  gray;
+  padding: .3em 0 .5em  4.5em;
+  border: none;
+  outline: none;
+  border-bottom: 2px solid var(--color)
+}
+
+
+
+
+.forinput:not(:placeholder-shown)+ .forlabel,
+.forinput:focus+ .forlabel{
+  transform:translateY(-17px) scale(.7);
+  transform-origin:left;
+  --color: #3866f2;
+}
+.forlabel{
+  color: var(--color);
+  cursor: pointer;
+  position: absolute;
+  top: 0;
+  left: 10px;
+  transform: translateY(10px);
+  transition: transform .5s, color .3s;
+}
+input{
+  text-align: center;
 }

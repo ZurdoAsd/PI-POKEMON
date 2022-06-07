@@ -38,7 +38,6 @@ const getAllPokemonApi = async () => {
 };
 
 const getPokemonDb = async () => {
- 
   const dbPoke = await Pokemon.findAll({
     include: {
       model: Types,
@@ -66,9 +65,7 @@ const getPokemonDb = async () => {
 
     }) 
   })
-
   return aux;
-  // return dbPoke
 };
 
 const AllPoke = async () => {
@@ -113,45 +110,25 @@ router.get("/pokemons/:id", async (req, res) => {
 router.post("/pokemons", async (req, res) => {
 
 const {name,hp,attack,defense,speed,height,weight,sprite,types}= req.body
-
 const nuevoPoke = await Pokemon.create({
     name,hp,attack,defense,speed,height,weight,sprite
 })
  
-const typedb = await Types.findAll({
- where:{name:types}   
-})
+const typedb = await Types.findAll({ where:{name:types} })
 nuevoPoke.addTypes(typedb)
-
 res.json({msg: "pokemon creado"})
-
 });
 
 router.get("/types", async (req, res) => {
-//     try {
-//           const res3 = await Types.findAll();
-//   console.log(res3);
-//   return res.send(res3);
-//     } catch (error) {
-//         console.log(error);
-//     }
-
-Types.findAll()
-.then(resp =>res.send(resp))
-.catch(e=>console.log(e))
-
-
+Types.findAll().then(resp =>res.send(resp)).catch(e=>console.log(e))
 });
 
 
 router.put("pokemons/:id", async(req, res) => {
-try {
-  
-const {id} = req.params
+  const {id} = req.params
 const infodb = await Pokemon.findOne({where: {id: id}})
-
+try {
 await infodb.update({
-  // id: req.body.id,
   name: req.body.name,
   hp: req.body.hp,
   attack: req.body.attack,
@@ -163,7 +140,6 @@ await infodb.update({
   types: req.body.types.map(e => e.name + " "),
 })
 req.body.types.forEach(async (e) => {
-  // recorro por los generos que me pasen y los busco en mi base de datos
   let typesDB = await Types.findAll({ where: { name: e } });
   await infodb.setTypes(typesDB);
 });
@@ -175,18 +151,6 @@ res.send(infodb);
 })
 
 router.delete("pokemons/:id", async(req, res) => {
-
-  try {
-    const { id } = req.params;
-
-    // const pokemonToDelete = await Pokemon.findByPk(id);
-
-    // if (pokemonToDelete) {
-    //   await pokemonToDelete.destroy();
-    //   return res.send("Pokemon Borrado!");
-    // }
-    // res.status(404).send("Pokemon no encontrado.");
-
       try {
         const { id } = req.params;
         const pokemonToDelete = await Pokemon.findByPk(id);
@@ -198,14 +162,8 @@ router.delete("pokemons/:id", async(req, res) => {
       } catch (error) {
         res.status(400).send(error);
       }
-    
-
-
-  } catch (error) {
-    res.status(400).send(error);
   }
-
-})
+)
 
 
 

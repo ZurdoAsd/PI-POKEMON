@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import Sorts from "../FILTER-SORTS-VALIDATE/Sorts";
-import { getAllPokemons } from "../redux/actions";
+import { getAllPokemons, clearSearch } from "../redux/actions";
 import Card from "./Card";
 import Paginado from "./Paginado";
 import SearchBar from "./SearchBar";
@@ -12,9 +12,9 @@ import "../assets/homes.css";
 export default function Home() {
   const dispatch = useDispatch();
   const allPokemons = useSelector((state) => state.pokemons);
-  const [order, setOrder] = useState("");
+  const [/*order*/, setOrder] = useState("");
   const [currentPage, setCurrentPage] = useState(1);
-  const [pokemonsPerPage, setpokemonsPerPage] = useState(12);
+  const pokemonsPerPage = 12;
   const indeOfLast = currentPage * pokemonsPerPage;
   const indexfirst = indeOfLast - pokemonsPerPage;
 
@@ -26,6 +26,9 @@ export default function Home() {
 
   useEffect(() => {
     dispatch(getAllPokemons());
+    return () => {
+      dispatch(clearSearch());
+    };
   }, [dispatch]);
 
   const handleClick = (e) => {
@@ -33,27 +36,15 @@ export default function Home() {
     dispatch(getAllPokemons());
   };
 
-  console.log(allPokemons);
 
   return (
     <div className="container">
-      <div>
-        <SearchBar setCurrentPage={setCurrentPage} />
-      </div>
-
+      <div><SearchBar setCurrentPage={setCurrentPage} /></div>
       <div className="select-home">
-        <div>
-          <button className="botHome" onClick={handleClick}>
-            RECARGAR
-          </button>
-        </div>
-        <Link to="/create">
-          <button className="botHome2">Crear Pokemon </button>
-        </Link>
+        <div><button className="botHome" onClick={handleClick}>RECARGAR</button>
+        </div>  <Link to="/create"><button className="botHome2">Crear Pokemon </button></Link>
 
-        <div className="estilos.content">
-          <Sorts setOrder={setOrder} setCurrentPage={setCurrentPage} />
-        </div>
+        <div className="estilos.content"><Sorts setOrder={setOrder} setCurrentPage={setCurrentPage} /> </div>
       </div>
 
       <div>
@@ -65,6 +56,7 @@ export default function Home() {
       </div>
 
       <div className="contentCards">
+        {currentpokemons[0] === "notFound" ? "sin resultados" : null}
         {currentpokemons.length ? (
           currentpokemons.map((p) => {
             return (
@@ -80,7 +72,7 @@ export default function Home() {
           })
         ) : (
           <img
-            src="https://imgflip.com/s/meme/Grus-Plan.jpg"
+            src= "https://i.gifer.com/origin/a8/a8cce7e5fb8f774dc79a06e3f727a070_w200.webp"
             alt=""
             justify-content="center"
             align-items="center"
