@@ -9,7 +9,6 @@ import {
   SEARCH_POKEMON,
   GET_POKEMONID,
   GET_POKEMONS,
-  CLEAR_SEARCH,
 } from "./DataTypes.js";
 
 export function getAllPokemons() {
@@ -36,23 +35,18 @@ export function getTypes() {
   };
 }
 
-export function searchpoke(name) {
-  return function (dispatch) {
-    axios
-      .get(`http://localhost:3001/pokemons?name=${name}`)
-      .then((response) =>
-        dispatch({
-          type: SEARCH_POKEMON,
-          payload: response.data,
-        })
-      )
 
-      .catch((error) =>
-        dispatch({
-          type: SEARCH_POKEMON,
-          payload: ["notFound"],
-        })
-      );
+export function searchpoke(name) {
+  return async function (dispatch) {
+    try {
+      const res = await axios(`http://localhost:3001/pokemons?name=${name}`);
+      return dispatch({
+        type: SEARCH_POKEMON,
+        payload: res.data,
+      });
+    } catch (error) {
+      console.log(error);
+    }
   };
 }
 
@@ -76,11 +70,7 @@ export function clearDetails(payload) {
     payload,
   };
 }
-export function clearSearch() {
-  return {
-    type: CLEAR_SEARCH,
-  };
-}
+
 
 //crear
 export function crearPoke(input) {

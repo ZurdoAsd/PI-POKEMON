@@ -10,121 +10,117 @@
 }
 
 .form {
-    width:60%;
-    max-width: 300px;
-    margin: auto;
-    margin-bottom: 10px;
-    display: flex;
-    flex-direction: column;
-    background-color: white;
-    box-shadow: 0 2px 3px 4px rgba(20, 20, 20, 0.4);
-    border-radius: 10px;
-    padding: 4.5em 3em;
-    opacity: 0.9;
-  }
-  .section { display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    margin-bottom: 15px;}
-
-  .title-name{
-    font-size: 15px;  
+  width: 60%;
+  max-width: 300px;
+  margin: auto;
+  margin-bottom: 10px;
+  display: flex;
+  flex-direction: column;
+  background-color: white;
+  box-shadow: 0 2px 3px 4px rgba(20, 20, 20, 0.4);
+  border-radius: 10px;
+  padding: 4.5em 3em;
+  opacity: 0.9;
 }
-  .input{
-    font-family: "Kabel Bd", sans-serif;
-    padding: 3px;
-    width: 60%;
-    background-color: #e5e5e5;
-    border-style: groove;
-    border-radius: 2px; 
+.section {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-bottom: 15px;
 }
 
-.item-eliminar{
-
-    display: flex;
-    height: fit-content;
-    margin-left: 5px;
-    padding-left:10px;
-    color:#e5e5e5;
-
+.title-name {
+  font-size: 15px;
+}
+.input {
+  font-family: "Kabel Bd", sans-serif;
+  padding: 3px;
+  width: 60%;
+  background-color: #e5e5e5;
+  border-style: groove;
+  border-radius: 2px;
+  border-color: #e5e5e5;
 }
 
+/* items para eliminar */
 
-.delete-types{
-    background: rgba(255, 255, 255, 0.397);
-    border-radius: 16px;
-    border: 1px solid rgba(255, 255, 255, 0.498);
-    margin: 5px;
-    font-size: 20;
-    font-weight: bold;
-    color: #e5e5e5;
-    background-color: #4c5354; 
-    padding: 10px;
- 
-}
-.delete-types:hover{
-    transform: scale(90%);  
-}
-.error{
-    text-align: start;
-    color: #f42007;
-    font-size: 14px;
+.item-eliminar {
+  display: flex;
+  height: fit-content;
+  margin-left: 5px;
+  padding-left: 10px;
+  color: #e5e5e5;
 }
 
-.botcreate{
-    border-radius: 30px;
-    font-size:30;
-    cursor:pointer;
-    color: #e5e5e5;
-    border: 2px solid gray;
-    background-color: #4c5354; 
-    padding: 15px 45px ;
-    font-weight: bold;
+.delete-types {
+  background: rgba(255, 255, 255, 0.397);
+  border-radius: 16px;
+  border: 1px solid rgba(255, 255, 255, 0.498);
+  margin: 5px;
+  font-size: 20;
+  font-weight: bold;
+  color: #e5e5e5;
+  background-color: #4c5354;
+  padding: 10px;
+}
+.delete-types:hover {
+  transform: scale(90%);
+}
+.error {
+  text-align: start;
+  color: #f42007;
+  font-size: 14px;
+}
+/*boto de home */
+.botcreate {
+  border-radius: 30px;
+  font-size: 30;
+  cursor: pointer;
+  color: #e5e5e5;
+  border: 2px solid gray;
+  background-color: #4c5354;
+  padding: 15px 45px;
+  font-weight: bold;
 }
 
-.botcreate:hover{
-    color: #e5e5e5;
-    border: 2px solid transparent;
-    border-style: groove;
-    transform: scale(120%);  
-    
+.botcreate:hover {
+  color: #e5e5e5;
+  border: 2px solid transparent;
+  border-style: groove;
+  transform: scale(120%);
 }
-
-.forgrup{
+/* los input menos types */
+.forgrup {
   position: relative;
   --color: #5757577e;
   margin-bottom: 15px;
-
 }
-.forinput{
+.forinput {
   width: 70%;
   font-family: inherit;
   font-size: inherit;
-  color:  gray;
-  padding: .3em 0 .5em  4.5em;
+  color: gray;
+  padding: 0.3em 0 0.5em 4.5em;
   border: none;
   outline: none;
-  border-bottom: 2px solid var(--color)
+  border-bottom: 2px solid var(--color);
 }
 
-
-
-
-.forinput:not(:placeholder-shown)+ .forlabel,
-.forinput:focus+ .forlabel{
-  transform:translateY(-17px) scale(.7);
-  transform-origin:left;
+.forinput:not(:placeholder-shown) + .forlabel,
+.forinput:focus + .forlabel {
+  transform: translateY(-17px) scale(0.7);
+  transform-origin: left;
   --color: #3866f2;
 }
-.forlabel{
+.forlabel {
   color: var(--color);
   cursor: pointer;
   position: absolute;
   top: 0;
   left: 10px;
   transform: translateY(10px);
-  transition: transform .5s, color .3s;
+  transition: transform 0.5s, color 0.3s;
 }
-input{
+input {
   text-align: center;
 }

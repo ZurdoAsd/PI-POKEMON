@@ -21,14 +21,12 @@ export default function SearchBar({setCurrentPage}) {
       if (!name) {
         return alert("Colocar un busqueda");
       } else {
-
       dispatch(searchpoke(name));
       setName('')
       setCurrentPage(1);
-      }
+      }}
 
-
-    }
+   
   return (
     <div className="searchbar"> 
     <div className="container-searchbar">
@@ -44,6 +42,8 @@ export default function SearchBar({setCurrentPage}) {
       <button className="button">Search</button>
        </form>
     </div>
+      {name.length?<h1>estas buscando: {name}</h1>: null} 
     </div>
+ 
   );
 }

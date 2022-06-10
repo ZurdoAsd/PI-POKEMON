@@ -61,7 +61,7 @@ const getPokemonDb = async () => {
       height: e.height,
       weight: e.weight,
       sprite: e.sprite,
-      types: e.types.map(e => e.name + " "),}) 
+      types: e.types.map(e => e.name),}) 
   })
   return aux;
 };
@@ -124,41 +124,6 @@ Types.findAll()
 });
 
 
-router.put("/pokemons/:id", async(req, res) => {
-try {
- const {id} = req.params
-const infodb = await Pokemon.findOne({where: {id: id}})
-await infodb.update({
-  name: req.body.name,
-  hp: req.body.hp,
-  attack: req.body.attack,
-  defense: req.body.defense,
-  speed: req.body.speed,
-  height: req.body.height,
-  weight: req.body.weight,
-  sprite: req.body.sprite,
-  types: req.body.types
-})
-res.send(infodb);
-} catch (error) {
-  console.log(error);
-}
-})
-
-router.delete("/pokemons/:id", async(req, res) => {
-      try {
-        const { id } = req.params;
-        const pokemonToDelete = await Pokemon.findByPk(id);
-        if (pokemonToDelete) {
-          await pokemonToDelete.destroy();
-          return res.send("Pokemon Borrado");
-        }
-        res.status(404).send("Pokemon no encontrado");
-      } catch (error) {
-        res.status(400).send(error);
-      }
-  }
-)
 
 
 

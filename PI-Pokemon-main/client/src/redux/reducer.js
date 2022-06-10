@@ -8,7 +8,6 @@ import {
   SEARCH_POKEMON,
   GET_POKEMONID,
   GET_POKEMONS,
-  CLEAR_SEARCH
 } from "./DataTypes.js";
 
 const initialState = {
@@ -16,6 +15,7 @@ const initialState = {
   copiaPokemons: [],
   types: [],
   details: {},
+  pokemonfuerte:[]
 };
 
 export default function rootReducer(state = initialState, action) {
@@ -48,16 +48,11 @@ export default function rootReducer(state = initialState, action) {
         ...state,
         details: {},
       };
-      case CLEAR_SEARCH:
-        return {
-          ...state,
-          pokemons: {},
-        };
 
     //FILTROS
 
     case ORDER_ALPHA:
-      let aux1=state.pokemons;
+      let aux1=state.pokemons;// modficado 
       let orderAlpha = aux1.sort((a, b) => {
         if (action.payload === "A-Z") {
           return a.name.localeCompare(b.name);
@@ -82,8 +77,12 @@ export default function rootReducer(state = initialState, action) {
         }
         return 0;
       });
-      return { ...state, pokemons: orderA };
 
+      return { ...state, 
+        pokemons: orderA ,
+        pokemonfuerte: orderA[0] 
+      };
+   
     case FILTER_API_DB:
       let aux3=state.copiaPokemons;
       if (action.payload === "Created") {
@@ -120,6 +119,7 @@ export default function rootReducer(state = initialState, action) {
         ...state,
         pokemons: action.payload === "123" ? state.copiaPokemons : filterTypes,
       };
+     
 
     default:
       return { ...state };

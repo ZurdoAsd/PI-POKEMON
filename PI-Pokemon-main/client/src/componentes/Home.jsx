@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import Sorts from "../FILTER-SORTS-VALIDATE/Sorts";
-import { getAllPokemons, clearSearch } from "../redux/actions";
+import { getAllPokemons} from "../redux/actions";
 import Card from "./Card";
 import Paginado from "./Paginado";
 import SearchBar from "./SearchBar";
@@ -12,9 +12,9 @@ import "../assets/homes.css";
 export default function Home() {
   const dispatch = useDispatch();
   const allPokemons = useSelector((state) => state.pokemons);
-  const [/*order*/, setOrder] = useState("");
+  const [order, setOrder] = useState("");
   const [currentPage, setCurrentPage] = useState(1);
-  const pokemonsPerPage = 12;
+  const [pokemonsPerPage, setpokemonsPerPage] = useState(12);
   const indeOfLast = currentPage * pokemonsPerPage;
   const indexfirst = indeOfLast - pokemonsPerPage;
 
@@ -26,9 +26,6 @@ export default function Home() {
 
   useEffect(() => {
     dispatch(getAllPokemons());
-    return () => {
-      dispatch(clearSearch());
-    };
   }, [dispatch]);
 
   const handleClick = (e) => {
@@ -54,9 +51,15 @@ export default function Home() {
           paginado={paginado}
         />
       </div>
-
+<div className="letrero"> 
+   {currentpokemons.length
+   ?<h3>Pokemon Encontrados:  {allPokemons.length}</h3>
+   :<h3>Pokemon Encontrados: 0 →→→ Presiona RECARGAR para continuar</h3>
+   }</div>
       <div className="contentCards">
+
         {currentpokemons[0] === "notFound" ? "sin resultados" : null}
+     
         {currentpokemons.length ? (
           currentpokemons.map((p) => {
             return (
@@ -77,7 +80,7 @@ export default function Home() {
             justify-content="center"
             align-items="center"
             height="100%"
-            width="50%"
+            width="80%"
           />
         )}
       </div>

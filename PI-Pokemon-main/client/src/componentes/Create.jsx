@@ -1,5 +1,5 @@
 import React from "react";
-import { useEffect, useState, useMemo } from "react";
+import { useEffect, useState} from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { getTypes, crearPoke } from "../redux/actions";
 import validate from "../FILTER-SORTS-VALIDATE/Validate";
@@ -26,22 +26,6 @@ export default function Create() {
     dispatch(getTypes());
   }, [dispatch]);
 
-  const errorscontrol = useMemo(() => {
-    if (
-      error.name ||
-      error.hp ||
-      error.weight ||
-      error.attack ||
-      error.defense ||
-      error.height ||
-      error.types 
-    )
- 
-      return true;
-    return false;
-  }, [error]);
-
-   console.log(error)
   const handleOfChange = (e) => {
     setInput({
       ...input,
@@ -60,7 +44,6 @@ export default function Create() {
       ...input,
       types: [...new Set([...input.types, e.target.value])],
     });
-    console.log(e.target.value);
   };
 
   const handleDeleteTypes = (e) => {
@@ -309,8 +292,7 @@ export default function Create() {
           <button
             className="create-boton"
             type="submit"
-             disabled={errorscontrol}
-          >
+           >
             Create Pokemon
           </button>
           <button className="botForm" type="reset">

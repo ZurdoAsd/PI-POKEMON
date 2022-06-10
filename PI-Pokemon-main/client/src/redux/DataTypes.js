@@ -7,4 +7,3 @@ export const FILTER_API_DB = "FILTER_API_DB";
 export const ORDER_STR = "ORDER_STR";
 export const ORDER_ALPHA = "ORDER_ALPHA";
 export const CLEAR_DETAILS = "CLEAR_DETAILS";
-export const CLEAR_SEARCH = "CLEAR_SEARCH";

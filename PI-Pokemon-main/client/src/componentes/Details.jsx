@@ -20,7 +20,7 @@ if (poke.name) {
 return (
 <div className="posicion"> 
 <div className="posicion-boton-detail">
-   <Link to="/home">
+   <Link to="/Home">
 <button className="botdetail">Go to Home</button>
 </Link> 
  </div>
